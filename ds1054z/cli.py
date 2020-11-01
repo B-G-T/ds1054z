@@ -274,6 +274,10 @@ def main():
             from PIL import Image, ImageOps, ImageEnhance
         except ImportError:
             parser.error('Please install Pillow (or the older PIL) to use --save-screen')
+        
+        from PIL import ImageFile
+        ImageFile.LOAD_TRUNCATED_IMAGES = True
+        
         # formatting the filename
         if args.filename: fmt = args.filename
         else: fmt = 'ds1054z-scope-display_{ts}.png'
